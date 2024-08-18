@@ -1,0 +1,43 @@
+
+1.各文件作用说明
+loginPage.py  实现登录页面
+
+mainPage.py 实现主界面（登录后页面）
+
+views.py 实现主界面中各模块功能
+
+db.py 数据处理
+
+users.json 存放登录时用到的账户密码
+如：{"username": "admin", "password": "123456"}
+修改或添加按照以上格式
+修改方法：admin和123456为账户密码，修改时只用修改这一部分
+添加方法：按格式{"username": "具体用户名", "password": "具体密码"}添加到users.json中
+
+students.json 存放具体数据
+格式：{"username": "admin","parent1": "95","parent2": "95","parent3": "95"}
+其中parent1 parent2 parent3可更改为 语文、数学等具有具体意义的词
+
+2.  .py文件修改
+views.py
+students.json中parent1 parent2 parent3修改后的名称必须与以下部分的parent1 parent2 parent3对应
+columns = ('username', 'parent1', 'parent2', 'parent3')
+self.treeView.column('parent1', anchor='center', width=80)
+self.treeView.column('parent2', anchor='center', width=80)
+self.treeView.column('parent3', anchor='center', width=80)
+self.treeView.heading('parent1', text='parent1')
+self.treeView.heading('parent2', text='parent2')
+self.treeView.heading('parent3', text='parent3')
+self.treeView.insert('', index + 1,values=(student['username'], student['parent1'], student['parent2'], student['parent3']))
+
+窗口名称默认为空
+
+如需添加名称，在mainPage.py文件第8行代码中修改
+self.root.title('')将名称加到引号内
+如self.root.title('窗口名称')
+
+窗口大小默认600*400
+在mainPage.py文件第9行代码中修改窗口大小
+self.root.geometry('600x400')
+
+
